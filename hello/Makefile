@@ -6,11 +6,16 @@ COMPOSANT = hello_component
 LIBSO = ${COMPOSANT}.so
 LIBSO_OBJS = ${COMPOSANT}.o
 
+all: test $(LIBSO)
+
 include ../gcc.mk
 include ../pybind11.mk
 
 
-all: $(LIBSO)
+test: $(LIBSO)
+	echo "execution du test"
+	python3 test.py
+
 clean:
 	rm -f ${LIBSO}  ${LIBSO_OBJS}
 
